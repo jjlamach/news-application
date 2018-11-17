@@ -1,6 +1,7 @@
 # News Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8. <br/>
+It uses the <a href="https://www.theguardian.com/us">Guardian </a> API.
 
 ## Development server
 
