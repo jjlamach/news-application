@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+/* The HTTP client that allows us to communicate with a backend API*/
+import { HttpClientModule } from "@angular/common/http";
 
 // Routes
 const routes :  Routes = [
@@ -22,6 +24,7 @@ const routes :  Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(routes),
     ClarityModule,
     BrowserAnimationsModule

@@ -5,6 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
+/*
+  @JsonIgnoreProperties: ignores keys-values from JSON object that are not listed
+  as fields in the POJO model. Won't complain.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NewsResponse {
 
