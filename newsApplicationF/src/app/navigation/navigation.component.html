@@ -1,0 +1,26 @@
+<clr-main-container>
+  <clr-header>
+    <div class="header-nav" [clr-nav-level]="1">
+      <div class="branding">
+        <span class="title">Guardian News</span>
+        <img id="logoImage" class="logo" src="../../assets/newsGuy.png">
+      </div>
+    </div>
+  </clr-header>
+
+  <div class="content-container">
+    <main class="content-area">
+      <router-outlet></router-outlet>
+    </main>
+    <nav class="sidenav" [clr-nav-level]="2">
+
+      <section class="sidenav-content">
+        <a routerLink="/home" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Sports</a>
+        <a href="#" class="nav-link">Politics</a>
+      </section>
+
+    </nav>
+  </div>
+
+</clr-main-container>

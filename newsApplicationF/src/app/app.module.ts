@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule} from "@angular/forms";
 /* Routing */
 import { RouterModule, Routes } from "@angular/router";
 
@@ -9,6 +10,7 @@ import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /* The HTTP client that allows us to communicate with a backend API*/
 import { HttpClientModule } from "@angular/common/http";
+import { NavigationComponent } from './navigation/navigation.component';
 
 // Routes
 const routes :  Routes = [
@@ -20,14 +22,16 @@ const routes :  Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     ClarityModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

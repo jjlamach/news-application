@@ -5,7 +5,6 @@ import com.cdm.depaul.news.pojos.GuardianResponse;
 import com.cdm.depaul.news.pojos.NewsResponse;
 import com.cdm.depaul.news.pojos.Results;
 import feign.Feign;
-import feign.Param;
 import feign.jackson.JacksonDecoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,33 +15,23 @@ import java.util.List;
 @RequestMapping(value = "/guardianNews")
 public class NewsController {
 
-  /**
-   *
-   * @return Five news regardless of category.
-   */
-  @GetMapping(value = {"/news"}, produces = "application/json")
-  List<Results> getAllNews() {
-    NewsClient news = Feign.builder()
-      .decoder(new JacksonDecoder())
-      .target(NewsClient.class, "https://content.guardianapis.com");
-
-    GuardianResponse guardianResponse = news.getAllNews();
-    NewsResponse newsResponse = guardianResponse.getResponse();
-    return newsResponse.getResults();
-  }
 
   /**
-   * @RequestParam We can retrieve the parameter value using this annotation.
-   * @param size
+   * @RequestParam We can retrieve the value of parameter  using this annotation.
+   * @param pageSize
    * @return amount of news selected by the user regardless of category.
+   *
+   *      /guardianNews/news&page-size=#
    */
-  @GetMapping(value = {"/news"}, params = {"page-size"},produces = "application/json")
-  List<Results> getNewsByPageSize(@RequestParam("page-size") String size) {
+  @GetMapping(value = {"/news"}, params = {"page-size", "production-office"}, produces = "application/json")
+  List<Results> getNewsByPageSize(@RequestParam(value = "page-size") String pageSize,
+                                  @RequestParam(value = "production-office") String location) {
     NewsClient news = Feign.builder()
       .decoder(new JacksonDecoder())
       .target(NewsClient.class, "https://content.guardianapis.com");
 
-    GuardianResponse guardianResponse = news.getNewsFromUserPageSize(size);
+    /* We place the retrieved parameter value as an argument.*/
+    GuardianResponse guardianResponse = news.getNumberOfNewsDefinedByUser(pageSize, location);
     NewsResponse newsResponse = guardianResponse.getResponse();
     return newsResponse.getResults();
   }

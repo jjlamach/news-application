@@ -15,6 +15,7 @@ public class Results {
   private boolean isHosted;
   private String pillarId;
   private String pillarName;
+  private Fields fields;
 
   public Results() {
 
@@ -106,5 +107,13 @@ public class Results {
 
   public void setPillarName(String pillarName) {
     this.pillarName = pillarName;
+  }
+
+  public Fields getFields() {
+    return fields;
+  }
+
+  public void setFields(Fields fields) {
+    this.fields = fields;
   }
 }

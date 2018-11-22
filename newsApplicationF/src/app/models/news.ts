@@ -1,17 +1,21 @@
+import {Fields} from "./fields";
+
 export class News {
   private _id: string;
   private _type: string;
   private _sectionId: string;
   private _sectionName: string;
-  private _webPublicationDate: string;
+  private _webPublicationDate: Date;
   private _webTitle: string;
   private _webUrl: string;
   private _apiUrl: string;
   private _isHosted: boolean;
   private _pillarId: string;
   private _pillarName: string;
+  private _fields: Fields;
 
   constructor() {}
+
 
   get id(): string {
     return this._id;
@@ -45,11 +49,12 @@ export class News {
     this._sectionName = value;
   }
 
-  get webPublicationDate(): string {
+
+  get webPublicationDate(): Date {
     return this._webPublicationDate;
   }
 
-  set webPublicationDate(value: string) {
+  set webPublicationDate(value: Date) {
     this._webPublicationDate = value;
   }
 
@@ -99,5 +104,13 @@ export class News {
 
   set pillarName(value: string) {
     this._pillarName = value;
+  }
+
+  get fields(): Fields {
+    return this._fields;
+  }
+
+  set fields(value: Fields) {
+    this._fields = value;
   }
 }

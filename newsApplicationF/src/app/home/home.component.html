@@ -1,8 +1,36 @@
-<header class="header-6">
-  <div class="branding">
-    <a routerLink="/home" class="nav-link">
-      <span class="title">Guardian News</span>
-    </a>
-    <img id="logoImage" class="logo" src="../../assets/newsGuy.png">
+<div id="helpfulNewsGuider" [hidden]="isHidden" class="alert alert-warning" role="alert">
+  <span class="alert-text">Currently reading {{pickedCountry}} articles.</span>
+</div>
+
+<div class="clr-select-wrapper float-lg-right">
+  <label>Country: </label>
+  <select clrSelect name="countries" [(ngModel)]="pickedCountry" (ngModelChange)="selectedCountry($event)">
+    <option *ngFor="let country of countries">{{country}}</option>
+  </select>
+</div>
+
+<div class="container clr-row">
+  <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12" *ngFor="let n of news">
+    <div class="card clickable">
+      <div class="card-block">
+        <div class="card-header">
+          <h1 class="card-title">{{n.webTitle}}</h1>
+        </div>
+        <div class="card-footer">
+          <strong>Publication date:</strong>
+          <span>{{n.webPublicationDate.getMonth()}}/{{n.webPublicationDate.getDay()}}/{{n.webPublicationDate.getFullYear()}}</span>
+          <br/>
+          <strong>Type: </strong>
+          <span>{{n.type}}</span>
+        </div>
+        <div class="container" align="center">
+          <button class="btn btn-outline-primary" (click)="goTo(n.webUrl)">Read article</button>
+        </div>
+      </div>
+    </div>
   </div>
-</header>
+</div>
+<br/><br/>
+<div class="container" align="center">
+  <button class="btn btn-outline-success" (click)="incrementNews()">More articles</button>
+</div>
