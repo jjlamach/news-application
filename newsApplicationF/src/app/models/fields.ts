@@ -1,17 +1,20 @@
-import {URL} from "url";
-
-export class Fields {
-  private _thumbnail:URL;
-
-  constructor() {
-
-  }
-
-  get thumbnail(): URL {
-    return this._thumbnail;
-  }
-
-  set thumbnail(value: URL) {
-    this._thumbnail = value;
-  }
+export interface Fields {
+  thumbnail:                     string;
+  headline:                      string;
+  standfirst:                    string;
+  trailText:                     string;
+  byline:                        string;
+  main:                          string;
+  body:                          string;
+  wordCount:                     null;
+  firstPublicationDate:          string;
+  isInappropriateForSponsorship: string;
+  isPremoderated:                string;
+  lastModified:                  string;
+  productionOffice:              string;
+  publication:                   string;
+  legallySensitive:              string;
+  lang:                          string;
+  bodyText:                      string;
+  charCount:                     string;
 }

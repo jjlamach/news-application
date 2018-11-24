@@ -11,11 +11,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /* The HTTP client that allows us to communicate with a backend API*/
 import { HttpClientModule } from "@angular/common/http";
 import { NavigationComponent } from './navigation/navigation.component';
+import { SportsComponent } from './sports/sports.component';
 
 // Routes
 const routes :  Routes = [
   { path: 'home', component: HomeComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full'}
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: 'sports', component: SportsComponent}
 ];
 
 
@@ -23,7 +25,8 @@ const routes :  Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    NavigationComponent
+    NavigationComponent,
+    SportsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NewsService} from "../services/news.service";
-import {News} from "../models/news";
+import {News} from "../models/News";
 
 @Component({
   selector: 'app-home',
@@ -18,6 +18,11 @@ export class HomeComponent implements OnInit {
 
   private pageSize = 6; // Determines the amount of news the API should retrieve.
 
+
+  basic: boolean;
+  news_in_a_modal: News;
+
+
   constructor(private newsService: NewsService) { }
 
   ngOnInit() {
@@ -34,7 +39,7 @@ export class HomeComponent implements OnInit {
       this.news.forEach(function (news: News) {
         let date: Date = new Date(news.webPublicationDate);
         /* Calls setter in Typescript.*/
-        news.webPublicationDate = date;
+        news.webPublicationDate = date.toDateString();
       })
     });
   }
@@ -51,6 +56,11 @@ export class HomeComponent implements OnInit {
     this.pickedCountry = selectedCountry;
     this.getNews(this.pageSize, this.pickedCountry);
     this.isHidden = false;
+  }
+
+  public showModal(card: News) {
+    this.basic = true;
+    this.news_in_a_modal = card;
   }
 
 }

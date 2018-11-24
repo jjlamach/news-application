@@ -12,14 +12,11 @@ public class Results {
   private String webTitle;
   private String webUrl;
   private String apiUrl;
-  private boolean isHosted;
   private String pillarId;
   private String pillarName;
   private Fields fields;
-
-  public Results() {
-
-  }
+  private boolean hosted;
+  public Results() {}
 
   public String getId() {
     return id;
@@ -85,14 +82,6 @@ public class Results {
     this.apiUrl = apiUrl;
   }
 
-  public boolean isHosted() {
-    return isHosted;
-  }
-
-  public void setHosted(boolean hosted) {
-    isHosted = hosted;
-  }
-
   public String getPillarId() {
     return pillarId;
   }
@@ -115,5 +104,13 @@ public class Results {
 
   public void setFields(Fields fields) {
     this.fields = fields;
+  }
+
+  public boolean isHosted() {
+    return hosted;
+  }
+
+  public void setHosted(boolean hosted) {
+    this.hosted = hosted;
   }
 }

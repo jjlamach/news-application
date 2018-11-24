@@ -10,11 +10,12 @@ import java.util.List;
   as fields in the POJO model. Won't complain.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NewsResponse {
-
+public class GuardianAPIResponse {
   private String status;
-
   private List<Results> results;
+  private int pageSize;
+
+  public GuardianAPIResponse() { }
 
   public String getStatus() {
     return status;
@@ -30,5 +31,13 @@ public class NewsResponse {
 
   public void setResults(List<Results> results) {
     this.results = results;
+  }
+
+  public int getPageSize() {
+    return pageSize;
+  }
+
+  public void setPageSize(int pageSize) {
+    this.pageSize = pageSize;
   }
 }

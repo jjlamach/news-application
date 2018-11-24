@@ -1,35 +1,66 @@
-<div id="helpfulNewsGuider" [hidden]="isHidden" class="alert alert-warning" role="alert">
-  <span class="alert-text">Currently reading {{pickedCountry}} articles.</span>
-</div>
+<div class="clr-row">
 
-<div class="clr-select-wrapper float-lg-right">
-  <label>Country: </label>
-  <select clrSelect name="countries" [(ngModel)]="pickedCountry" (ngModelChange)="selectedCountry($event)">
+  <div class="clr-col-4">
+    <span class="label label-blue">General News</span>
+  </div>
+
+  <div class="clr-col-6">
+    <span [hidden]="isHidden" class="label label-info">Currently reading {{pickedCountry.toUpperCase()}} articles.</span>
+  </div>
+  <br/> <br/>
+  <div class="clr-col">
+    <div class="clr-select-wrapper float-lg-right">
+    <label>Country: </label>
+    <select clrSelect name="countries" [(ngModel)]="pickedCountry" (ngModelChange)="selectedCountry($event)">
     <option *ngFor="let country of countries">{{country}}</option>
-  </select>
+    </select>
+    </div>
+  </div>
+
 </div>
 
 <div class="container clr-row">
   <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12" *ngFor="let n of news">
     <div class="card clickable">
+      <div class="container" align="center">
+        <i class="far fa-newspaper"></i>
+      </div>
       <div class="card-block">
         <div class="card-header">
           <h1 class="card-title">{{n.webTitle}}</h1>
+          <div class="card-img">
+            <img src="{{n.fields.thumbnail}}">
+          </div>
         </div>
         <div class="card-footer">
-          <strong>Publication date:</strong>
-          <span>{{n.webPublicationDate.getMonth()}}/{{n.webPublicationDate.getDay()}}/{{n.webPublicationDate.getFullYear()}}</span>
-          <br/>
-          <strong>Type: </strong>
-          <span>{{n.type}}</span>
+          <div class="card-media-block">
+            <div class="card-media-description">
+              <strong>Author</strong><span class="card-media-text">{{n.fields.byline}}</span>
+              <strong>Publication date</strong><span class="card-media-text">{{n.webPublicationDate}}</span>
+              <strong>Type</strong><span class="card-media-text">{{n.type}}</span>
+            </div>
+          </div>
         </div>
+
         <div class="container" align="center">
-          <button class="btn btn-outline-primary" (click)="goTo(n.webUrl)">Read article</button>
+          <div class="btn-group btn-outline-primary">
+            <button class="btn"(click)="showModal(n)">Read article</button>
+            <button class="btn" (click)="goTo(n.webUrl)">Go to site</button>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
 </div>
+
+<clr-modal [(clrModalOpen)]="basic">
+  <h3 class="modal-title">{{news_in_a_modal.webTitle}}</h3>
+  <div class="modal-body">
+    <p>{{news_in_a_modal.fields.bodyText}}</p>
+  </div>
+</clr-modal>
+
 <br/><br/>
 <div class="container" align="center">
   <button class="btn btn-outline-success" (click)="incrementNews()">More articles</button>
