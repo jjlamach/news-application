@@ -22,13 +22,27 @@ public class NewsController {
    */
   @GetMapping(value = {"/news"}, params = {"production-office", "page-size"}, produces = "application/json")
   List <Results> getNewsArticles(@RequestParam(value = "production-office") String location,
-                                 @RequestParam(value = "page-size") String pageSize) {
+                                 @RequestParam(value = "page-size") Integer pageSize) {
 
     NewsClient newsClient = Feign.builder()
             .decoder(new JacksonDecoder())
             .target(NewsClient.class, "https://content.guardianapis.com");
 
     TheGuardianResponse guardianResponse = newsClient.getNews(location, pageSize);
+    GuardianAPIResponse guardianAPIResponse = guardianResponse.getResponse();
+    return guardianAPIResponse.getResults();
+  }
+
+
+  @GetMapping(value = {"/sports"}, params = {"production-office", "page-size"}, produces = "application/json")
+  List<Results> getSportsArticles(@RequestParam(value = "production-office") String location,
+                                  @RequestParam(value = "page-size") Integer pageSize) {
+
+    NewsClient newsClient = Feign.builder()
+      .decoder(new JacksonDecoder())
+      .target(NewsClient.class, "https://content.guardianapis.com");
+
+    TheGuardianResponse guardianResponse = newsClient.getSportsArticles(location, pageSize);
     GuardianAPIResponse guardianAPIResponse = guardianResponse.getResponse();
     return guardianAPIResponse.getResults();
   }

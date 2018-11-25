@@ -1,31 +1,41 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams} from "@angular/common/http";
 import {News} from "../models/News";
-import { Observable} from "rxjs";
-import {Consumer} from "../interfaces/consumer";
-
+import {NewsFetcher} from "../interfaces/news-fetcher";
 
 @Injectable({
   providedIn: 'root'
 })
-/**
- * Service that retrieves data from the backend API.
- */
-export class NewsService implements Consumer{
 
-  /*  DI, by adding it as a parameter in the constructor.*/
-  constructor(private HttpClient: HttpClient) { }
+export class NewsService implements NewsFetcher{
 
-  public getNews(pageSize, location): Observable <News[]> {
-    return this.HttpClient.get<News[]>("http://localhost:8080/guardianNews/news",
-      {params: new HttpParams().set("page-size", pageSize).set("production-office",location)});
+  constructor(private httpClient: HttpClient) {}
+
+  /*
+    Retrieves general news.
+   */
+  getGeneralNews(location, pageSize) {
+    return this.httpClient.get<News[]>("http://localhost:8080/guardianNews/news",
+      {params: new HttpParams().set("production-office", location).set("page-size", pageSize)});
+  }
+  /*
+    Retrieves articles about politics.
+   */
+  getPoliticsArticles(location, pageSize) {
+
+  }
+  /*
+    Retrieves articles about sports.
+   */
+  getSportsArticles(location, pageSize) {
+    return this.httpClient.get<News[]>("http://localhost:8080/guardianNews/sports",
+      {params: new HttpParams().set("production-office", location).set("page-size",pageSize)});
   }
 
-  getPoliticsArticles(pageSize, location) {
-
-  }
-
-  getSportsArticles(pageSize, location) {
+  /*
+    Retrieves articles about the environment.
+   */
+  getEnvironmentalArticles(location, pageSize) {
 
   }
 }

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
 /*
-  @JsonIgnoreProperties: ignores keys-values from JSON object that are not listed
+  @JsonIgnoreProperties: ignores keys-values from JSON newsArticleInModal that are not listed
   as fields in the POJO model. Won't complain.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -25,9 +25,7 @@ public class GuardianAPIResponse {
     this.status = status;
   }
 
-  public List<Results> getResults() {
-    return results;
-  }
+  public List<Results> getResults() { return results; }
 
   public void setResults(List<Results> results) {
     this.results = results;

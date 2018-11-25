@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from "@angular/common/http";
 import { NavigationComponent } from './navigation/navigation.component';
 import { SportsComponent } from './sports/sports.component';
+import { NewsService} from "./services/news.service";
 
 // Routes
 const routes :  Routes = [
@@ -36,7 +37,8 @@ const routes :  Routes = [
     BrowserAnimationsModule,
     FormsModule
   ],
-  providers: [],
+  /* Injecting the service.*/
+  providers: [NewsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
