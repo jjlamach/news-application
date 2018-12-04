@@ -16,35 +16,47 @@
       </select>
     </div>
   </div>
-
 </div>
 
 
-<!--<div class="clickable card">-->
-  <!--<div class="card-block">-->
-    <!--<div class="alert alert-warning alert-sm">-->
-      <!--<button type="button" class="close" aria-label="Close">-->
-        <!--<clr-icon aria-hidden="true" shape="close"></clr-icon>-->
-      <!--</button>-->
-      <!--<div class="alert-item static">-->
-                <!--<span class="alert-text">-->
-                    <!--Use small alerts in a card.-->
-                <!--</span>-->
-      <!--</div>-->
-    <!--</div>-->
-    <!--<div class="card-media-block wrap">-->
-      <!--<img class="card-media-image" src="http://placehold.it/60x60" />-->
-      <!--<div class="card-media-description">-->
-        <!--<span class="card-media-title">Project B</span>-->
-        <!--<span class="card-media-text">Owner: Jane Doe</span>-->
-      <!--</div>-->
-    <!--</div>-->
-    <!--<p class="card-text">-->
-      <!--...-->
-    <!--</p>-->
-  <!--</div>-->
-  <!--<div class="card-footer">-->
-    <!--<a class="card-link">Button One</a>-->
-    <!--<a class="card-link">Button Two</a>-->
-  <!--</div>-->
-<!--</div>-->
+<div class="clickable card col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngFor="let sport of newsResponse.body; index as i">
+    <div class="container" align="center">
+      <i class="fas fa-futbol"></i>
+    </div>
+    <div class="card-block">
+      <div class="card-header">
+        <h1 class="card-title">{{sport.webTitle}}</h1>
+        <div class="card-image" align="center">
+          <img class="col-lg-4 col-md-4 col-sm-12 col-xs-12" src="{{sport.fields.thumbnail}}">
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-media-block">
+          <div class="card-media-description">
+            <strong>Author</strong><span class="card-media-text">{{sport.fields.byline}}</span>
+            <strong>Publication date</strong><span class="card-media-text">{{sport.webPublicationDate}}</span>
+            <strong>Type</strong><span class="card-media-text">{{sport.type}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" align="center">
+        <div class="btn-group btn-outline-primary">
+          <button class="btn btn-sm" (click)="showModal(newsResponse.body[i])">Read article</button>
+          <button class="btn btn-sm" (click)="goToNewsSite(sport.webUrl)">Go to site</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<clr-modal [(clrModalOpen)]="basic" >
+  <h3 class="modal-title">{{newsArticleInModal.webTitle}}</h3>
+  <div class="modal-body">
+    <p>{{newsArticleInModal.bodyText}}</p>
+  </div>
+</clr-modal>
+
+<br/><br/>
+<div class="container" align="center">
+  <button class="btn btn-outline-success" (click)="incrementNewsOnPage()"> More articles</button>
+</div>

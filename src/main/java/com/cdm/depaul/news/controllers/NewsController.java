@@ -46,6 +46,4 @@ public class NewsController {
     GuardianAPIResponse guardianAPIResponse = guardianResponse.getResponse();
     return guardianAPIResponse.getResults();
   }
-
-
 }

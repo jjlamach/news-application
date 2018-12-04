@@ -15,9 +15,10 @@
     <nav class="sidenav" [clr-nav-level]="2">
 
       <section class="sidenav-content">
-        <a routerLink="/home" class="nav-link">Home</a>
-        <a routerLink="/sports" class="nav-link">Sports</a>
-        <a href="#" class="nav-link">Politics</a>
+        <!--https://angular.io/api/router/RouterLinkActive-->
+        <a routerLink="/home" routerLinkActive="active" class="nav-link">Home</a>
+        <a routerLink="/sports" routerLinkActive="active" class="nav-link">Sports</a>
+        <a href="#"  routerLinkActive="active" class="nav-link">Politics</a>
       </section>
 
     </nav>

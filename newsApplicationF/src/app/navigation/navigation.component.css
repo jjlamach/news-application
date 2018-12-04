@@ -3,3 +3,8 @@
   height: auto;
   padding-left: 5px;
 }
+
+.router-link-active {
+  color: #000;
+  font-weight: bold;
+}

@@ -4,7 +4,7 @@
   </div>
 
   <div class="clr-col-6">
-    <span [hidden]="isHidden" class="label label-info">Currently reading {{selectedCountry.toUpperCase()}} articles.</span>
+    <span [hidden]="isInfoModalHidden" class="label label-info">Currently reading {{selectedCountry.toUpperCase()}} articles.</span>
   </div>
 
   <br/> <br/>
@@ -19,7 +19,8 @@
 </div>
 
 <div class="container clr-row">
-  <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12" *ngFor="let n of news; index as i">
+  <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12" *ngFor="let n of newsResponse.body; index as i">
+
     <div class="card clickable">
       <div class="container" align="center">
         <i class="far fa-newspaper"></i>
@@ -43,13 +44,13 @@
 
         <div class="container" align="center">
           <div class="btn-group btn-outline-primary">
-            <button class="btn" (click)="showModal(news[i])">Read article</button>
-            <button class="btn" (click)="goToNewsSite(n.webUrl)">Go to site</button>
+            <button class="btn btn-sm" (click)="showModal(newsResponse.body[i])">Read article</button>
+            <button class="btn btn-sm" (click)="goToNewsSite(n.webUrl)">Go to site</button>
           </div>
         </div>
-
       </div>
     </div>
+
   </div>
 </div>
 
@@ -62,6 +63,6 @@
 
 <br/><br/>
 <div class="container" align="center">
-  <button class="btn btn-outline-success" (click)="incrementNewsOnPage()">More articles</button>
+  <button class="btn btn-outline-success" (click)="incrementNewsOnPage()"> More articles</button>
 </div>
 
