@@ -15,12 +15,14 @@ import { SportsComponent } from './sports/sports.component';
 import { NewsService} from "./services/news.service";
 import { PoliticsComponent } from './politics/politics.component';
 
+import { LocationStrategy, HashLocationStrategy} from '@angular/common';
+
 // Routes
 const routes :  Routes = [
   { path: 'home', component: HomeComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'sports', component: SportsComponent},
-  {path: 'politics', component: PoliticsComponent}
+  { path: 'politics', component: PoliticsComponent}
 ];
 
 
@@ -41,7 +43,7 @@ const routes :  Routes = [
     FormsModule
   ],
   /* Injecting the service.*/
-  providers: [NewsService],
+  providers: [NewsService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
