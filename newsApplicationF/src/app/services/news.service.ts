@@ -17,7 +17,7 @@ export class NewsService implements NewsFetcher {
     Retrieves general news.
    */
   getGeneralNews(location, pageSize) {
-    return this.httpClient.get("http://localhost:8080/guardianNews/news",
+    return this.httpClient.get("/guardianNews/news",
       {
         params: new HttpParams().set("production-office", location).set("page-size", pageSize),
         observe: 'response',// to get the full response; not just the body (JSON).
@@ -34,7 +34,7 @@ export class NewsService implements NewsFetcher {
     Retrieves articles about politics.
    */
   getPoliticsArticles(location, pageSize) {
-    return this.httpClient.get("http://localhost:8080/guardianNews/politics", {
+    return this.httpClient.get("/guardianNews/politics", {
       params: new HttpParams().set("production-office", location).set("page-size", pageSize),
       observe: 'response',
       reportProgress: true
@@ -51,7 +51,7 @@ export class NewsService implements NewsFetcher {
     Retrieves articles about sports.
    */
   getSportsArticles(location, pageSize) {
-    return this.httpClient.get<News[]>("http://localhost:8080/guardianNews/sports",
+    return this.httpClient.get<News[]>("/guardianNews/sports",
       {
         params: new HttpParams().set("production-office", location).set("page-size",pageSize),
         observe: 'response',

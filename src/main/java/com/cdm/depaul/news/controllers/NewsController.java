@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(value = "http://localhost:4200")
+//@CrossOrigin(value = "http://localhost:4200")
+@CrossOrigin("https://theguardian.herokuapp.com")
 @RestController
 @RequestMapping(value = "/guardianNews")
-
-
 public class NewsController {
   /**
    * @RequestParam we can retrieve the value of the parameter by using this annotation.
