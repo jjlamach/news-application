@@ -24,4 +24,16 @@ public interface NewsClient {
     @RequestLine("GET /search?section=sport&production-office={location}&order-by=newest&use-date=published&show-elements=all&show-fields=all&page-size={size}&rights=developer-community&q=sport&api-key=1889ecf3-6a0b-414b-af86-15c06ef74894")
     TheGuardianResponse getSportsArticles(@Param("location") String location,
                                           @Param("size") Integer size);
+
+
+    /**
+     *
+     * @param location
+     * @param size
+     * @return
+     */
+    @RequestLine("GET /search?section=politics&production-office={location}&order-by=newest&use-date=published&show-elements=all&show-fields=all&page-size={size}&rights=developer-community&api-key=1889ecf3-6a0b-414b-af86-15c06ef74894")
+    TheGuardianResponse getPoliticsArticles(@Param("location") String location,
+                                            @Param("size") Integer size);
+
 }

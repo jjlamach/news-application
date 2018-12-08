@@ -3,7 +3,7 @@ import { HttpClient,HttpParams, HttpResponse} from "@angular/common/http";
 import { News} from "../models/News";
 import { NewsFetcher} from "../interfaces/news-fetcher";
 import { throwError} from "rxjs";
-import {catchError, map, retry} from "rxjs/operators";
+import {catchError,retry} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,15 @@ export class NewsService implements NewsFetcher {
     Retrieves articles about politics.
    */
   getPoliticsArticles(location, pageSize) {
-
+    return this.httpClient.get("http://localhost:8080/guardianNews/politics", {
+      params: new HttpParams().set("production-office", location).set("page-size", pageSize),
+      observe: 'response',
+      reportProgress: true
+    })
+      .pipe(
+        retry(3),
+        catchError(this.handleHttpErrors)
+      );
   }
 
 

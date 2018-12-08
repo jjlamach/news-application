@@ -1,18 +1,18 @@
 <div class="clr-row">
   <div class="clr-col-4">
-    <span class="label label-purple">Sports Articles</span>
+    <span class="label label-orange">Politics</span>
   </div>
 
   <div class="clr-col-6">
-    <span class="label label-info">Currently reading {{ selectedCountry.toUpperCase() }} sports articles</span>
+    <span [hidden]="isInfoModalHidden" class="label label-info">Currently reading {{selectedCountry.toUpperCase()}} articles.</span>
   </div>
-  <br/> <br/>
 
+  <br/> <br/>
   <div class="clr-col">
     <div class="clr-select-wrapper float-lg-right">
-      <label>Country:</label>
+      <label>Country: </label>
       <select clrSelect name="countries" [(ngModel)]="selectedCountry" (ngModelChange)="changeCountryNews($event)">
-        <option *ngFor="let country of countries"> {{ country }}</option>
+        <option *ngFor="let country of countries">{{country}}</option>
       </select>
     </div>
   </div>
@@ -24,7 +24,9 @@
 
     <div class="card clickable">
       <div class="container" align="center">
-        <i class="fas fa-futbol"></i>
+        <i [hidden]="isPoliticsIconHidden" class="fas fa-landmark"></i>
+        <i [hidden]="isMascotHidden" class="fas fa-republican"></i>
+        <i [hidden]="isMascotHidden" class="fas fa-democrat"></i>
       </div>
       <div class="card-block">
         <div class="card-header">
@@ -51,9 +53,10 @@
         </div>
       </div>
     </div>
-  </div>
 
+  </div>
 </div>
+
 
 <clr-modal [(clrModalOpen)]="basic" >
   <h3 class="modal-title">{{newsArticleInModal.webTitle}}</h3>

@@ -13,6 +13,8 @@ import java.util.List;
 @CrossOrigin(value = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/guardianNews")
+
+
 public class NewsController {
   /**
    * @RequestParam we can retrieve the value of the parameter by using this annotation.
@@ -33,7 +35,12 @@ public class NewsController {
     return guardianAPIResponse.getResults();
   }
 
-
+  /**
+   *
+   * @param location
+   * @param pageSize
+   * @return
+   */
   @GetMapping(value = {"/sports"}, params = {"production-office", "page-size"}, produces = "application/json")
   List<Results> getSportsArticles(@RequestParam(value = "production-office") String location,
                                   @RequestParam(value = "page-size") Integer pageSize) {
@@ -43,6 +50,24 @@ public class NewsController {
       .target(NewsClient.class, "https://content.guardianapis.com");
 
     TheGuardianResponse guardianResponse = newsClient.getSportsArticles(location, pageSize);
+    GuardianAPIResponse guardianAPIResponse = guardianResponse.getResponse();
+    return guardianAPIResponse.getResults();
+  }
+
+  /**
+   *
+   * @param location
+   * @param pageSize
+   * @return
+   */
+  @GetMapping(value = {"/politics"}, params = {"production-office", "page-size"}, produces = "application/json")
+  List<Results> getPoliticsArticles(@RequestParam(value = "production-office") String location,
+                                    @RequestParam(value = "page-size") Integer pageSize) {
+    NewsClient newsClient = Feign.builder()
+      .decoder(new JacksonDecoder())
+      .target(NewsClient.class, "https://content.guardianapis.com");
+
+    TheGuardianResponse guardianResponse = newsClient.getPoliticsArticles(location, pageSize);
     GuardianAPIResponse guardianAPIResponse = guardianResponse.getResponse();
     return guardianAPIResponse.getResults();
   }

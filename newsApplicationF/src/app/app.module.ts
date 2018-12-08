@@ -13,12 +13,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { NavigationComponent } from './navigation/navigation.component';
 import { SportsComponent } from './sports/sports.component';
 import { NewsService} from "./services/news.service";
+import { PoliticsComponent } from './politics/politics.component';
 
 // Routes
 const routes :  Routes = [
   { path: 'home', component: HomeComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'},
-  { path: 'sports', component: SportsComponent}
+  { path: 'sports', component: SportsComponent},
+  {path: 'politics', component: PoliticsComponent}
 ];
 
 
@@ -27,7 +29,8 @@ const routes :  Routes = [
     AppComponent,
     HomeComponent,
     NavigationComponent,
-    SportsComponent
+    SportsComponent,
+    PoliticsComponent
   ],
   imports: [
     BrowserModule,

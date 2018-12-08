@@ -30,9 +30,15 @@ export class HomeComponent implements OnInit, NewsProvider {
   };
 
 
+  isUSAFlagHidden: boolean = true;
+  isNPaperIconHidden: boolean = true;
+
+
+
   constructor(private service: NewsService) {}
 
   ngOnInit() {
+    this.displaySmallIcons(this.selectedCountry);
     this.isInfoModalHidden = false;
     this.getNews(this.selectedCountry, this.pageSize);
   }
@@ -41,7 +47,9 @@ export class HomeComponent implements OnInit, NewsProvider {
     Changes the location of the News url.
    */
   changeCountryNews(location) {
-    this.getNews(location, this.pageSize);
+    this.selectedCountry = location;
+    this.displaySmallIcons(this.selectedCountry);
+    this.getNews(this.selectedCountry, this.pageSize);
     this.isInfoModalHidden = false;
   }
 
@@ -82,5 +90,16 @@ export class HomeComponent implements OnInit, NewsProvider {
     this.newsArticleInModal.bodyText = card.fields.bodyText;
     this.newsArticleInModal.webTitle = card.webTitle;
     this.basic = true;
+  }
+
+  private displaySmallIcons(location) {
+    this.selectedCountry = location;
+    if (this.selectedCountry == 'us') {
+      this.isUSAFlagHidden = false;
+      this.isNPaperIconHidden = true;
+    } else if (this.selectedCountry == 'uk') {
+      this.isUSAFlagHidden = true;
+      this.isNPaperIconHidden = false;
+    }
   }
 }
