@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit, NewsProvider {
   constructor(private service: NewsService) {}
 
   ngOnInit() {
+    window.location.reload();
     this.displaySmallIcons(this.selectedCountry);
     this.isInfoModalHidden = false;
     this.getNews(this.selectedCountry, this.pageSize);
