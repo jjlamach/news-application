@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewsService} from "../services/news.service";
 import { News} from "../models/News";
 import { NewsProvider} from "../interfaces/news-provider";
-import {HttpResponse} from "@angular/common/http";
+import { HttpResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-home',
@@ -38,7 +38,6 @@ export class HomeComponent implements OnInit, NewsProvider {
   constructor(private service: NewsService) {}
 
   ngOnInit() {
-    window.location.reload();
     this.displaySmallIcons(this.selectedCountry);
     this.isInfoModalHidden = false;
     this.getNews(this.selectedCountry, this.pageSize);

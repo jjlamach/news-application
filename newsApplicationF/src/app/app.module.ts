@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from "@angular/forms";
+
 /* Routing */
 import { RouterModule, Routes } from "@angular/router";
 
@@ -8,7 +9,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-/* The HTTP client that allows us to communicate with a backend API*/
+
 import { HttpClientModule } from "@angular/common/http";
 import { NavigationComponent } from './navigation/navigation.component';
 import { SportsComponent } from './sports/sports.component';
