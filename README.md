@@ -8,3 +8,5 @@ Since this application is hosted on Heroku for <strong>free</strong>, it takes a
   <li> To learn more about Spring boot.</li>
   <li> To learn more about Angular.</li>
 </ul>
+
+<img src="https://github.com/jlama94/news-application/blob/master/websiteImage.png"/>
